@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 template<typename T>
 class node{
@@ -32,6 +32,43 @@ void print(node<int>* root){
      print(root->left);
      print(root->right);
 }
+node<int>* takeinputlebelwise(){
+    cout<<"enter the data"<<endl;
+    int rootval;
+    cin>>rootval;
+    if(rootval == -1){
+        return NULL;
+}
+node<int>* root=new node<int>(rootval);
+queue<node<int>*>pendingnodes;
+pendingnodes.push(root);
+
+while(pendingnodes.size() != 0){
+    node<int>* front =pendingnodes.front();
+    pendingnodes.pop();
+    cout<<"enter theh left child "<<front->data<<endl;
+    int leftchilddata;
+    cin>>leftchilddata;
+
+    if(leftchilddata != -1){
+        node<int>* child = new node<int>(leftchilddata);
+        front->left=child;
+        pendingnodes.push(child);
+    } 
+
+    cout<<"enter theh right child "<<front->data<<endl;
+    int rightchilddata;
+    cin>>rightchilddata;
+
+    if(rightchilddata != -1){
+        node<int>* child = new node<int>(rightchilddata);
+        front->right=child;
+        pendingnodes.push(child);
+    } 
+  
+}
+return root;
+}
 node<int>* takeinput(){
     cout<<"enter the data"<<endl;
     int rootval;
@@ -45,8 +82,6 @@ node<int>*  rightchild=takeinput();
 root->left=leftchild;
 root->right=rightchild;
 return root;
-
-
 }
 int main(){
     // node<int>* root=new node<int>(2);  
@@ -56,9 +91,8 @@ int main(){
     // root->left=node1;
     // root->right=node2;
     // print(root);
-    node<int>* root=takeinput();
+    node<int>* root=takeinputlebelwise();
     print(root);
-
-
+    delete root;
 }
 
