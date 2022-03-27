@@ -1,0 +1,2 @@
+h.deletion();
+    h.print();
