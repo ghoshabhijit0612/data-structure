@@ -70,18 +70,27 @@ void heapify(int arr[],int size_arr,int i){
     }
     
 }
+void heapsort(int arr[],int n){
+    int size = n;
+    while(size >1){
+        swap(arr[size],arr[1]);
+        size--;
+         heapify(arr,size,1);
+    }
+   
+}
 int main(){
     heap h;
-    h.insert(2);
-    h.insert(3);
-    h.insert(4);
-    h.insert(5);
-    h.insert(6);
-    h.insert(8);
-    h.print();
-    h.deletion();
-    h.print();
-    int arr[6] = {-1 , 2 , 1 ,8,7,5};
+    // h.insert(2);
+    // h.insert(3);
+    // h.insert(4);
+    // h.insert(5);
+    // h.insert(6);
+    // h.insert(8);
+    // h.print();
+    // h.deletion();
+    // h.print();
+     int arr[6] = {-1 , 2 , 1 ,8,7,5};
     int n=5;
     for(int i= n/2; i>0 ;i-- ){
         heapify(arr,n,i);
@@ -90,4 +99,20 @@ int main(){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
+    cout<<"After heapify"<<endl;
+    heapsort(arr,n);
+      for(int i=1;i<=n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+    cout<<"-------------------"<<endl;
+    priority_queue<int>x;
+    x.push(34);
+    x.push(3);
+    x.push(6);
+    x.push(8);
+   while(!x.empty()){
+       cout<<" "<<x.top();
+        x.pop();    
+   }
 }
